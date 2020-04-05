@@ -6,6 +6,7 @@ const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const recipesRouter = require('./recipes/recipes-router')
 const ratingsRouter = require('./ratings/ratings-router')
+const emailsRouter = require('./emails/emails-router')
 
 const app = express()
 
@@ -19,6 +20,8 @@ app.use(cors())
 
 app.use('/api/recipes', recipesRouter)
 app.use('/api/ratings', ratingsRouter)
+app.use('/api/emails', emailsRouter)
+
 
 app.use(function errorHandler(error, req, res, next) {
   let response

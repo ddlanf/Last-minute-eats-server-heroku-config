@@ -26,4 +26,8 @@ VALUES
 (2, 5), (5, 5), (2, 5), (1, 5),
 (5, 6), (2, 6), (1, 6), (1, 6);
 
+INSERT INTO last_minute_eats_emails (email)
+VALUES
+('john@gmail.com'), ('michael@gmail.com'), ('jessica@yahoo.com'), ('Jotaro@oraora.com');
+
 COMMIT;

@@ -3,7 +3,7 @@ const app = require('../src/app');
 const helpers = require('./testHelpers')
 require('dotenv').config()
 
-describe.only('Rating API:', function () {
+describe('Rating API:', function () {
   let db;
   let { addRatings, addRecipes } = helpers
 
@@ -46,7 +46,7 @@ describe.only('Rating API:', function () {
 
   });
 
-  describe.only('POST /api/ratings/:recipe_id', function () {
+  describe('POST /api/ratings/:recipe_id', function () {
 
     beforeEach('insert some ratings', () => {
         return db.raw(addRecipes)

@@ -19,7 +19,11 @@ const helpers = {
         ('Make-Ahead Breakfast Quesadilla', 15, 'minutes', '{"2 Sausage Links", "2 Eggs", "1 Flour Tortilla", "Shredded Cheddar Cheese"}', '{"In a skillet thoroughly cook the sausage and eggs.", "Place mixture in the center of a flour tortilla. Top with cheese, and fold the edges inward to form a sealed pocket.", "Heat on a skillet, seam-side down. Flip and cook until golden brown.", "Enjoy!"}', 'https://i.pinimg.com/originals/92/47/da/9247daee1f90d66516f16cd4c8108cf3.jpg'),
         ('Baked Salmon', 15, 'minutes', '{"6 oz Skinless Salmon Fillet", "Salt and Pepper", "Olive Oil", "1 Lime", "Fresh Thyme"}', '{"Preheat 
         the oven to 400˚F (200˚C).", "Cover a sheet pan with foil or parchment paper.", "Drizzle olive oil on the salmon, then season with salt and pepper. Top with lime slices and thyme.", "Bake for 10-12 minutes. (The salmon should flake easily with a fork when it’s ready.)"}', 'https://www.cookingclassy.com/wp-content/uploads/2019/06/brown-sugar-lime-baked-salmon-22.jpg'),
-        ('Bacon Cheddar Chips', 12, 'minutes', '{"2 Cups Shredded Cheddar Cheese", "6 Strips Bacon", "1/4 Cup Chives", "Salt and Pepper"}', '{"Preheat oven to 350°F (180˚C).", "In a medium-sized mixing bowl, combine cheddar cheese, bacon, chives, salt, and pepper.", "Spoon cheese mixture into a greased mini muffin tin. Press mixture into mini muffin tin.", "Bake for 5-8 minutes or until cheese is melted and edges are slightly brown.", "Cool on cooling rack or paper towel for 10 minutes, or take it on the go!"}', 'https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/tips/e204296536bb4d30ba25a5bd739c09ba.jpeg?output-quality=auto&downsize=800:*');` 
+        ('Bacon Cheddar Chips', 12, 'minutes', '{"2 Cups Shredded Cheddar Cheese", "6 Strips Bacon", "1/4 Cup Chives", "Salt and Pepper"}', '{"Preheat oven to 350°F (180˚C).", "In a medium-sized mixing bowl, combine cheddar cheese, bacon, chives, salt, and pepper.", "Spoon cheese mixture into a greased mini muffin tin. Press mixture into mini muffin tin.", "Bake for 5-8 minutes or until cheese is melted and edges are slightly brown.", "Cool on cooling rack or paper towel for 10 minutes, or take it on the go!"}', 'https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/tips/e204296536bb4d30ba25a5bd739c09ba.jpeg?output-quality=auto&downsize=800:*');`,
+    addEmail: 
+    `INSERT INTO last_minute_eats_emails (email)
+     VALUES
+     ('john@gmail.com'), ('michael@gmail.com'), ('jessica@yahoo.com'), ('Jotaro@oraora.com');` 
 }
 
 module.exports = helpers
