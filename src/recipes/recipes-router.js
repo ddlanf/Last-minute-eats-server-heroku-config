@@ -3,6 +3,7 @@ const RecipesService = require('./recipes-service')
 const recipesRouter = express.Router()
 const jsonBodyParser = express.json()
 const { requireToken } = require('../middleware/auth-token')
+const path = require('path')
 
 recipesRouter
     .route('/')
@@ -65,7 +66,10 @@ recipesRouter
 
         RecipesService.insertRecipe(req.app.get('db'), newRecipe)
             .then(recipe => {
-                res.status(201).json(recipe)
+                res
+                .status(201)
+                .location(path.posix.join(req.originalUrl, `/${recipe.id}`))
+                .json(recipe)
         })
         .catch(next)
     })

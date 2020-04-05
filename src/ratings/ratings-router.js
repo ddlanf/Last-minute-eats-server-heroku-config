@@ -10,8 +10,13 @@ ratingsRouter
        RatingsService.getAllRatings(req.app.get('db'))
             .then(ratings => res.json(ratings))
     })
+
+ratingsRouter
+    .route('/:recipe_id')
     .post(jsonBodyParser, (req, res, next) =>{
-        const { rating, recipe_id } = req.body
+        
+        const { rating } = req.body
+        const { recipe_id } = req.params 
 
         const newRating = { rating, recipe_id } 
 
