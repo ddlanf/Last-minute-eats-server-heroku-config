@@ -45,6 +45,12 @@ recipesRouter
             })
         }
 
+        if(preparation_time <= 0){
+            return res.status(400).json({
+                error: `Invalid Time`
+            })
+        }
+
         if(!(preparation_time_unit === 'minutes') && !(preparation_time_unit === 'seconds')){
             return res.status(400).json({
                 error: `Invalid unit`
@@ -53,13 +59,13 @@ recipesRouter
 
         if(preparation_time > 60 && preparation_time_unit === 'seconds'){
             return res.status(400).json({
-                error: `use 'minutes' for any duration more than 60 seconds`
+                error: `Use 'minutes' for any duration more than 60 seconds`
             })
         }
 
         if(preparation_time > 15 && preparation_time_unit === 'minutes'){
             return res.status(400).json({
-                error: `preparation time needs to be less than or equal to 15 mins`
+                error: `Preparation time needs to be less than or equal to 15 mins`
             })
         }
 
@@ -88,14 +94,20 @@ recipesRouter
             steps, image
         } = req.body
 
+
         const recipeToUpdate = {
             recipe_name, preparation_time,
             preparation_time_unit, ingredients,
             steps, image
         }
 
-        const { recipe_id } = req.params 
-  
+        
+        for(let [key, value] of Object.entries(recipeToUpdate)){
+            if(value == null || value ===''){
+                delete recipeToUpdate[key]
+            }
+        }
+
         const numberOfValues = Object.values(recipeToUpdate).filter(Boolean).length
         
         if (numberOfValues === 0)
@@ -105,9 +117,50 @@ recipesRouter
             }
         })
 
+        if(recipeToUpdate.preparation_time){
+            
+            if(!(preparation_time_unit === 'minutes') && !(preparation_time_unit === 'seconds')){
+                return res.status(400).json({
+                    error: `Invalid unit`
+                })
+            }
+
+            if(preparation_time <= 0){
+                return res.status(400).json({
+                    error: `Invalid Time`
+                })
+            }
+
+            if(preparation_time > 60 && preparation_time_unit === 'seconds'){
+                return res.status(400).json({
+                    error: `Use 'minutes' for any duration more than 60 seconds`
+                })
+            }
+
+            if(preparation_time > 15 && preparation_time_unit === 'minutes'){
+                return res.status(400).json({
+                    error: `Preparation time needs to be less than or equal to 15 mins`
+                })
+            }
+
+            if(preparation_time > 60 && preparation_time_unit === 'seconds'){
+                return res.status(400).json({
+                    error: `Use 'minutes' for any duration more than 60 seconds`
+                })
+            }
+
+            if(preparation_time > 15 && preparation_time_unit === 'minutes'){
+                return res.status(400).json({
+                    error: `Preparation time needs to be less than or equal to 15 mins`
+                })
+            }
+        }
+        
+        const { recipe_id } = req.params 
+
         RecipesService.updateRecipe(req.app.get('db'), recipeToUpdate, recipe_id)
-            .then(numRowsAffected => {
-                    return res.status(200).end()
+            .then(recipe => {
+                    return res.status(200).json(recipe)
             })
             .catch(next)
            

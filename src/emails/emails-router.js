@@ -25,9 +25,7 @@ emailsRouter
         }
 
         if(!newEmail.email.includes('@') || !newEmail.email.slice(newEmail.email.indexOf('@'), newEmail.email.length).includes('.')){
-      
             return res.status(400).json({
-             
                 error: `Invalid email`
             })
         } 
@@ -36,7 +34,6 @@ emailsRouter
             .then(email => {
                 res
                 .status(201)
-                .location(path.posix.join(req.originalUrl, `/${email.id}`))
                 .json(email)
         })
         .catch(next)
