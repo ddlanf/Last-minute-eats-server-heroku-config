@@ -16,7 +16,7 @@ The endpoints this API provides include the following.
 **/api/ratings**
 - [GET] / - return all ratings
 - [POST] /:recipe_id - add rating to the recipe with corresponding recipe_id
-- [PATCH] /:id changing the rating with correspoding id
+- [PATCH] /:id change the rating with correspoding id
 
  **/api/emails**
  - [GET] / - return all emails
