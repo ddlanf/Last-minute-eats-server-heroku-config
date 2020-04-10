@@ -1,26 +1,36 @@
-# Express Boilerplate!
+# **Last Minute Eats Server**
 
-This is a boilerplate project used for starting new projects!
+Website Link : [https://last-minute-eats.now.sh](https://last-minute-eats.now.sh)
 
-## Set up
+## Core Features
+This an express server used in the "Last Minute Eats" app. 
+The endpoints this API provides include the following. 
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+**/api/recipes**
+- [GET] / - return all recipes 
+- [POST] / - add a new recipe
+- [GET] /:recipe_id - return a recipe with corresponding recipe_id
+- [PATCH] /:recipe_id - make edit to the recipe with corresponding recipe_id
+- [DELETE] /:recipe_id - delete a recipe with corresponding recipe_id
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+**/api/ratings**
+- [GET] / - return all ratings
+- [POST] /:recipe_id - add rating to the recipe with corresponding recipe_id
+- [PATCH] /:id changing the rating with correspoding id
 
-## Scripts
+ **/api/emails**
+ - [GET] / - return all emails
+ - [POST] / - add a new email
 
-Start the application `npm start`
+ ## Technologies used
+- Node.js (Express)
+- PostgreSQL
+- Heroku Server and Database (Deployment)
+- Testing with Mocha, Chai, and Supertest
 
-Start nodemon for the application `npm run dev`
-
-Run the tests `npm test`
-
-## Deploying
-
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+## Running the server with client locally
+Clone [Last-minute-eats-client](https://github.com/ddlanf/Last-minutes-eats-client) repository.
+Once you clone both client and server, do the following.
+1. In "myusedcarsalesman-client", change the API_ENDPOINT in config.js to localhost:8000 or any other ports that may be used.
+2. Configure the CORS setting in "last-minute-eats-server" to allow localhost to send requests. This is can be done simply by adding app.use(cors()) in App.js file or changing the value of CLIENT_ORIGIN in config.js  
+3. Run both client and server with "npm start". "npm run dev" can also be used in "myusedcarsalesman-api-auth"
