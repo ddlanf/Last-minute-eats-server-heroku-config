@@ -22,7 +22,16 @@ const RatingsService = {
           .then(recipe =>
             RatingsService.getById(db, recipe.id)
           )
-    }
+    },
+    updateRating(db, updatedRating, id){
+      return RatingsService.getById(db, id)
+        .update(updatedRating)
+        .returning('*')
+          .then(([recipe]) => recipe)
+          .then(recipe =>
+            RatingsService.getById(db, recipe.id)
+          )
+  }
 }
 
 module.exports = RatingsService

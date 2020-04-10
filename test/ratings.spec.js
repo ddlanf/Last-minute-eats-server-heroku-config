@@ -81,4 +81,23 @@ describe('Rating API:', function () {
 
   });
 
+  describe('PATCH /api/rating/:recipe_id', function(){
+      beforeEach('insert some ratings', () => {
+          return db.raw(addRecipes)
+      })
+
+      it('should respond with 400 status when given invalid data', function () {
+        
+        const badRating = {
+          "rating": 1000,
+          "id" : 1
+        }
+
+        return supertest(app)
+          .patch('/api/ratings/1')
+          .send(badRating)
+          .expect(400)
+      })
+    })
+
 })
