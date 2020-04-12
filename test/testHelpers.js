@@ -23,7 +23,16 @@ const helpers = {
     addEmail: 
     `INSERT INTO last_minute_eats_emails (email)
      VALUES
-     ('john@gmail.com'), ('michael@gmail.com'), ('jessica@yahoo.com'), ('Jotaro@oraora.com');` 
+     ('john@gmail.com'), ('michael@gmail.com'), ('jessica@yahoo.com'), ('Jotaro@oraora.com');` ,
+    addToken: 
+    `INSERT INTO last_minute_eats_recipe_tokens (token, recipe_id)
+     VALUES
+     ('$2a$12$Bq4HoxFZ1IwnvVB/q.sbvOkIKj4GG8F5F.7awgdbOZO6arPbyxU8q', 1),
+     ('$2a$12$Bq4HoxFZ1IwnvVB/q.sbvOkIKj4GG8F5F.7awgdbOZO6arPbyxU8q', 2),
+     ('$2a$12$Bq4HoxFZ1IwnvVB/q.sbvOkIKj4GG8F5F.7awgdbOZO6arPbyxU8q', 3),
+     ('$2a$12$Bq4HoxFZ1IwnvVB/q.sbvOkIKj4GG8F5F.7awgdbOZO6arPbyxU8q', 4),
+     ('$2a$12$Bq4HoxFZ1IwnvVB/q.sbvOkIKj4GG8F5F.7awgdbOZO6arPbyxU8q', 5),
+     ('$2a$12$Bq4HoxFZ1IwnvVB/q.sbvOkIKj4GG8F5F.7awgdbOZO6arPbyxU8q', 6);`
 }
 
 module.exports = helpers

@@ -3,7 +3,6 @@ const RatingsService = require('./ratings-service')
 const ratingsRouter = express.Router()
 const jsonBodyParser = express.json()
 const path = require('path')
-//const { requireToken } = require('../middleware/auth-token')
 
 ratingsRouter
     .route('/')

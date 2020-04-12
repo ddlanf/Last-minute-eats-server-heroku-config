@@ -2,7 +2,7 @@ const express = require('express')
 const RecipesService = require('./recipes-service')
 const recipesRouter = express.Router()
 const jsonBodyParser = express.json()
-const { requireToken } = require('../middleware/auth-token')
+const { requireRecipeToken } = require('../middleware/recipe-token')
 const path = require('path')
 
 recipesRouter
@@ -87,7 +87,7 @@ recipesRouter
                 res.status(200).json(recipe)
              })
      })
-    .patch(jsonBodyParser, (req, res, next) =>{
+    .patch(requireRecipeToken, jsonBodyParser, (req, res, next) =>{
         const {
             recipe_name, preparation_time,
             preparation_time_unit, ingredients,
@@ -165,7 +165,7 @@ recipesRouter
             .catch(next)
            
     })
-    .delete(requireToken, (req, res, next) =>{
+    .delete(requireRecipeToken, (req, res, next) =>{
         RecipesService.deleteRecipe(req.app.get('db'), req.params.recipe_id)
             .then(recipe => {
                 res.json(recipe)

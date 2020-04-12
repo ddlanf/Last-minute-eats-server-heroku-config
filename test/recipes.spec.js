@@ -5,7 +5,7 @@ require('dotenv').config()
 
 describe('Recipe API:', function () {
   let db;
-  let { addRecipes } = helpers
+  let { addRecipes, addToken } = helpers
 
   
   before('make knex instance', () => {  
@@ -16,9 +16,9 @@ describe('Recipe API:', function () {
     app.set('db', db)
   });
   
-  before('cleanup', () => db.raw('TRUNCATE TABLE last_minute_eats_ratings, last_minute_eats_recipes RESTART IDENTITY;'));
+  before('cleanup', () => db.raw('TRUNCATE TABLE last_minute_eats_recipe_tokens, last_minute_eats_ratings, last_minute_eats_recipes RESTART IDENTITY;'));
 
-  afterEach('cleanup', () => db.raw('TRUNCATE TABLE last_minute_eats_ratings, last_minute_eats_recipes RESTART IDENTITY;')); 
+  afterEach('cleanup', () => db.raw('TRUNCATE TABLE last_minute_eats_recipe_tokens, last_minute_eats_ratings, last_minute_eats_recipes RESTART IDENTITY;')); 
 
   after('disconnect from the database', () => db.destroy()); 
 
@@ -127,14 +127,17 @@ describe('Recipe API:', function () {
     });
 
     describe('PATCH /api/recipes/:recipe_id', () => {
-
-        beforeEach('insert some todos', () => {
+        
+        beforeEach('insert some recipes', () => {
             return db.raw(addRecipes)
         })
+        beforeEach('insert some recipes', () => {
+          return db.raw(addToken)
+       })
     
         it('should update recipe when given valid data and an id', function () {
           const item = {
-            'recipe_name': 'Banana Bread'
+            "recipe_name": "Banana Bread"
           };
           
           let doc;
@@ -144,8 +147,9 @@ describe('Recipe API:', function () {
               doc = _doc
               return supertest(app)
                 .patch(`/api/recipes/${doc.id}`)
+                .set('Authorization', 'token sample_token')
                 .send(item)
-                .expect(200);
+                .expect(200)
             })
         });
     
@@ -159,6 +163,7 @@ describe('Recipe API:', function () {
             .then(doc => {
               return supertest(app)
                 .patch(`/api/recipes/${doc.id}`)
+                .set('Authorization', 'token sample_token')
                 .send(badRecipe)
                 .expect(400);
             })
@@ -170,6 +175,9 @@ describe('Recipe API:', function () {
 
         beforeEach('insert some recipes', () => {
             return db.raw(addRecipes)
+        })
+        beforeEach('insert some recipes', () => {
+          return db.raw(addToken)
         })
     
         it('should delete an recipe by id', () => {

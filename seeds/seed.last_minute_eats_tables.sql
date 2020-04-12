@@ -2,7 +2,9 @@ BEGIN;
 
 TRUNCATE
   last_minute_eats_recipes,
-  last_minute_eats_ratings
+  last_minute_eats_ratings,
+  last_minute_eats_emails,
+  last_minute_eats_recipe_tokens
   RESTART IDENTITY CASCADE;
 
 INSERT INTO last_minute_eats_recipes (recipe_name, preparation_time, preparation_time_unit, ingredients, steps, image)
@@ -29,5 +31,14 @@ VALUES
 INSERT INTO last_minute_eats_emails (email)
 VALUES
 ('john@gmail.com'), ('michael@gmail.com'), ('jessica@yahoo.com'), ('Jotaro@oraora.com');
+
+INSERT INTO last_minute_eats_recipe_tokens (token, recipe_id)
+VALUES
+('$2a$12$Bq4HoxFZ1IwnvVB/q.sbvOkIKj4GG8F5F.7awgdbOZO6arPbyxU8q', 1),
+('$2a$12$Bq4HoxFZ1IwnvVB/q.sbvOkIKj4GG8F5F.7awgdbOZO6arPbyxU8q', 2),
+('$2a$12$Bq4HoxFZ1IwnvVB/q.sbvOkIKj4GG8F5F.7awgdbOZO6arPbyxU8q', 3),
+('$2a$12$Bq4HoxFZ1IwnvVB/q.sbvOkIKj4GG8F5F.7awgdbOZO6arPbyxU8q', 4),
+('$2a$12$Bq4HoxFZ1IwnvVB/q.sbvOkIKj4GG8F5F.7awgdbOZO6arPbyxU8q', 5),
+('$2a$12$Bq4HoxFZ1IwnvVB/q.sbvOkIKj4GG8F5F.7awgdbOZO6arPbyxU8q', 6);
 
 COMMIT;

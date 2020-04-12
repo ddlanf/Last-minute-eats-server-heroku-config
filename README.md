@@ -2,6 +2,10 @@
 
 Website Link : [https://last-minute-eats.now.sh](https://last-minute-eats.now.sh)
 
+## Image
+![Screenshot1](/images/screenshot1.PNG)
+![Screenshot2](/images/screenshot2.PNG)
+
 ## Core Features
 This an express server used in the "Last Minute Eats" app. 
 The endpoints this API provides include the following. 
@@ -17,6 +21,10 @@ The endpoints this API provides include the following.
 - [GET] / - return all ratings
 - [POST] /:recipe_id - add rating to the recipe with corresponding recipe_id
 - [PATCH] /:id change the rating with correspoding id
+
+ **/api/recipe-tokens**
+ - [POST] / - add a new token to the recipe with correspoding id specified in the body
+ - [GET] /recipe_id - checks whether given authorization token is valid 
 
  **/api/emails**
  - [GET] / - return all emails

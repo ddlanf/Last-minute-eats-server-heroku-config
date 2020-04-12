@@ -2,12 +2,10 @@ const express = require('express')
 const EmailsService = require('./emails-service')
 const emailsRouter = express.Router()
 const jsonBodyParser = express.json()
-const { requireToken } = require('../middleware/auth-token')
-const path = require('path')
 
 emailsRouter
     .route('/')
-    .get(requireToken, (req, res, next) => {
+    .get((req, res, next) => {
        EmailsService.getAllEmails(req.app.get('db'))
             .then(emails => res.json(emails))
     })

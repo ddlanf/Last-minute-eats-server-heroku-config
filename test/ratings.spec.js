@@ -15,9 +15,9 @@ describe('Rating API:', function () {
     app.set('db', db)
   });
   
-  before('cleanup', () => db.raw('TRUNCATE TABLE last_minute_eats_ratings, last_minute_eats_recipes RESTART IDENTITY;'));
+  before('cleanup', () => db.raw('TRUNCATE TABLE last_minute_eats_recipe_tokens, last_minute_eats_ratings, last_minute_eats_recipes RESTART IDENTITY;'));
 
-  afterEach('cleanup', () => db.raw('TRUNCATE TABLE last_minute_eats_ratings, last_minute_eats_recipes RESTART IDENTITY;')); 
+  afterEach('cleanup', () => db.raw('TRUNCATE TABLE last_minute_eats_recipe_tokens, last_minute_eats_ratings, last_minute_eats_recipes RESTART IDENTITY;')); 
 
   after('disconnect from the database', () => db.destroy()); 
 
