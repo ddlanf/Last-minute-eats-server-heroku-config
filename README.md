@@ -43,3 +43,4 @@ Once you clone both client and server, do the following.
 2. Configure the CORS setting in "last-minute-eats-server" to allow localhost to send requests. This is can be done simply by adding app.use(cors()) in App.js file or changing the value of CLIENT_ORIGIN in config.js  
 3. Run both client and server with "npm start". "npm run dev" can also be used in "myusedcarsalesman-api-auth"<!-- Just adding a random comment --><!-- Just adding a random comment --><!-- Just adding a random comment --><!-- Just adding a random comment --><!-- Just adding a random comment --><!-- Just adding a random comment --><!-- Just adding another harmless comment -->
 <!-- Just adding another harmless comment -->
+<!-- Just adding another harmless comment -->
